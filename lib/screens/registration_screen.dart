@@ -98,6 +98,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       print(_mobileController.text);
                       if (_key.currentState.validate()) {
                         print("Validated");
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => CategoryWidget()));
 
                         _registration.mobileNumber = _mobileController.text;
                         _registration.language = 'en';
