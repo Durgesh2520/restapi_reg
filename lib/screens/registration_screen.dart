@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rest_api_app/model/registration_model.dart';
+import 'package:rest_api_app/screens/login_screen.dart';
 import 'package:rest_api_app/view_model/api_viewmodel.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -98,10 +99,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       print(_mobileController.text);
                       if (_key.currentState.validate()) {
                         print("Validated");
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => CategoryWidget()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (_) => LoginScreen()));
 
                         _registration.mobileNumber = _mobileController.text;
                         _registration.language = 'en';
