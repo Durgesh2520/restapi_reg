@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rest_api_app/categoryWidget.dart';
+import 'package:rest_api_app/model/pro_model.dart';
 import 'package:rest_api_app/view_model/api_viewmodel.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -61,15 +62,24 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: RaisedButton(onPressed: () async {
                       print(_mobileController.text);
                       print(_passwordController.text);
+                      ProModel profilemodel = ProModel();
                       if (_key.currentState.validate()) {
                         print("Validated");
                       } else {
                         print("Not Validated");
                       }
                       ApiViewModel model = ApiViewModel();
+                      var res = await model.updateProDetails(profilemodel);
+
                       var res2 = await model.getLoginDetails(
                           _mobileController.text, _passwordController.text);
                       if (res2 != null) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => CategoryWidget()));
+                      }
+                      if (res != null) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
